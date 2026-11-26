@@ -8,7 +8,7 @@ export type Job = {
 };
 
 export const S = {
-  name: "Your Company",
+  name: "H2K",
   address: "",
   phone: "",
   email: "",

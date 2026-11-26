@@ -13,6 +13,7 @@ const OK: Record<string, string> = {
   id: "Terima kasih! Pesan Anda telah terkirim.",
 };
 const LANGS = [["pl", "Polski"], ["en", "English"], ["fil", "Filipino"], ["ru", "Русский"], ["id", "Indonesia"]];
+const LOGO_SRC = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/H2K%20LOGO-o65O4jh5m8RHXUSmG2nKj3jaAUBArh.jpg";
 type Mode = "apply" | "contact";
 const L = (v: Txt | undefined, l: string) => (typeof v === "string" ? v : v?.[l as "pl"] ?? v?.pl ?? v?.en ?? "");
 const JL: Record<string, Record<string, string>> = {
@@ -62,7 +63,7 @@ export default function Home({ content }: { content: Content }) {
       <div className="topline"><div className="wrap topline-inner"><span>{t.topline}</span>{site.email && <a href={`mailto:${site.email}`}>{site.email}</a>}</div></div>
       <header className="site-header">
         <div className="wrap bar">
-          <a className="logo" href="#top" aria-label={site.name + " - home"}><span className="logo-mark"><i></i><i></i><i></i></span><span>{site.name}</span></a>
+          <a className="logo" href="#top" aria-label={site.name + " - home"}><img className="logo-image" src={LOGO_SRC} alt="H2K sp. z o.o. logo" /></a>
           <button className="menu-toggle" type="button" aria-label={t.menu} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}><span></span><span></span><span></span></button>
           <nav className={menuOpen ? "nav-open" : ""}>
             <a href="#top" onClick={() => setMenuOpen(false)}>{t.home}</a>
@@ -176,7 +177,7 @@ export default function Home({ content }: { content: Content }) {
         </section>
       </main>
 
-      <footer className="site-footer"><div className="wrap footer-main"><div className="footer-brand"><a className="logo logo-footer" href="#top"><span className="logo-mark"><i></i><i></i><i></i></span><span>{site.name}</span></a><p>{t.footerText}</p></div><div className="footer-links"><strong>{t.quickLinks}</strong><a href="#jobs">{t.jobs}</a><a href="#how">{t.how}</a><a href="#why">{t.why}</a><a href="#faq">FAQ</a></div><div className="footer-links"><strong>{t.contact}</strong>{site.email && <a href={`mailto:${site.email}`}>{site.email}</a>}{site.phone && <a href={`tel:${site.phone}`}>{site.phone}</a>}{site.address && <span>{site.address}</span>}</div></div><div className="wrap footer-bottom"><span>© {new Date().getFullYear()} {site.name}. {t.rights}</span><span>{[site.nip && "NIP " + site.nip, site.krs && "KRS " + site.krs, site.regon && "REGON " + site.regon].filter(Boolean).join(" · ")}</span><span>{t.priv}</span></div></footer>
+      <footer className="site-footer"><div className="wrap footer-main"><div className="footer-brand"><a className="logo logo-footer" href="#top" aria-label={site.name + " - home"}><img className="logo-image" src={LOGO_SRC} alt="H2K sp. z o.o. logo" /></a><p>{t.footerText}</p></div><div className="footer-links"><strong>{t.quickLinks}</strong><a href="#jobs">{t.jobs}</a><a href="#how">{t.how}</a><a href="#why">{t.why}</a><a href="#faq">FAQ</a></div><div className="footer-links"><strong>{t.contact}</strong>{site.email && <a href={`mailto:${site.email}`}>{site.email}</a>}{site.phone && <a href={`tel:${site.phone}`}>{site.phone}</a>}{site.address && <span>{site.address}</span>}</div></div><div className="wrap footer-bottom"><span>© {new Date().getFullYear()} {site.name}. {t.rights}</span><span>{[site.nip && "NIP " + site.nip, site.krs && "KRS " + site.krs, site.regon && "REGON " + site.regon].filter(Boolean).join(" · ")}</span><span>{t.priv}</span></div></footer>
     </>
   );
 }

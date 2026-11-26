@@ -50,7 +50,7 @@ export const getContent = cache(async (): Promise<Content> => {
     }
     const copy: Copy = { text, faq: (copyDoc?.faq || []) as QA[], steps: (copyDoc?.steps || []) as QA[] };
 
-    return { ...S, ...(company || {}), jobs, copy, images };
+    return { ...S, ...(company || {}), name: S.name, jobs, copy, images };
   } catch (error) {
     console.error("Sanity content fetch failed:", error);
     // A temporary CMS/network issue should not take the public website offline.
